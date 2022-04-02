@@ -8,7 +8,7 @@ monorepo for a garden monitoring project using Uno R3 m328p and m2560
 
 # Pipeline
 
-[Data Pipeline Schemas](Garden%201d7ed/Data%20Pipel%20df07a.md)
+[Data Pipeline Schemas](https://github.com/ethgallucci/garduino-rs/blob/main/PIPELINES.md)
 
 # Arch
 
