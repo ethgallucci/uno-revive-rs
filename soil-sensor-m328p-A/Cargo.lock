@@ -94,7 +94,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "esp32-garden-rs"
+name = "m328p-soil-rs"
 version = "0.1.0"
 dependencies = [
  "arduino-hal",
