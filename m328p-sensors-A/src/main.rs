@@ -24,19 +24,20 @@ fn panic(_info: &PanicInfo) -> ! {
 }
 
 #[arduino_hal::entry]
-fn main() -> ! {
-    // Access board peripherals
-    let periph = arduino_hal::Peripherals::take().unwrap();
-    // Access individual pins
-    let pins = arduino_hal::pins!(periph);
-
-    // Access d13 port
-    let mut led = pins.d13.into_output();
-
-    // Monitor Log
+fn root() -> ! {
     loop {
-        led.toggle();
-        arduino_hal::delay_ms(1000);
+        // Access peripherals and indiv. pins
+        let periph = arduino_hal::Peripherals::take().unwrap();
+        let pins = arduino_hal::pins!(periph);
+
+        // Get sensor values here
+
+        // Tidy data
+
+        // Export data to cloud db
+
+        // 30 minute delay in between logs
+        arduino_hal::delay_ms(1800000)
     }
 }
 
@@ -108,4 +109,9 @@ fn proto_usart() -> ! {
         // respond
         ufmt::uwriteln!(&mut serial, "Got {}!\r", b).void_unwrap();
     }
+}
+
+// Proto fn for formatting and exporting logs to Apache server
+fn handle_logs() -> ! {
+
 }
