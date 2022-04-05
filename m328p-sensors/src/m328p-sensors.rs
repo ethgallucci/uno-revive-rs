@@ -77,7 +77,7 @@ fn root() -> ! {
             ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
         }
         ufmt::uwriteln!(&mut serial, "").void_unwrap();
-
+        
         // Wait 3 seconds
         arduino_hal::delay_ms(3000);
         // Feed the watchdog
