@@ -22,8 +22,6 @@
 
 # Board: Arduino Uno R3 m328p (sensors)
 
-Written in Rust
-
 Controls all sensors, captures soil moisture and sunlight inputs, batches them, and outputs them to the logger board. 
 
 - Soil Moisture sensors:
@@ -60,3 +58,6 @@ There are a few ways to compile the system.
   avr-garduino/m328p-sensors $ cargo build --verbose
   avr-garduino/m2560-oled-shields $ cargo build --verbose
   ```
+# Special Thanks
+I want to extend my gratitude to the contributors of the [avr-hal](https://github.com/rahix/avr-hal) crate.
+This project couldn't have done it without them :)
