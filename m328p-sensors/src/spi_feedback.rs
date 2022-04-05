@@ -1,7 +1,6 @@
 use super::*;
 
 extern crate nb;
-use self::nb::block;
 
 // Proto fn for establishing SPI comms
 pub fn proto_spi_feedback() -> ! {
@@ -23,7 +22,7 @@ pub fn proto_spi_feedback() -> ! {
 
     loop {
         // Send a byte
-        block!(spi.send(0b00001111)).void_unwrap();
+        nb::block!(spi.send(0b00001111)).void_unwrap();
         // Assumes MISO connected to MOSI, read data should be same
         let dat = nb::block!(spi.read()).void_unwrap();
         arduino_hal::delay_ms(1000);
