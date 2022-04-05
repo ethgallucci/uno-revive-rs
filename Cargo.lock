@@ -5,11 +5,11 @@ version = 3
 [[package]]
 name = "arduino-hal"
 version = "0.1.0"
-source = "git+https://github.com/Rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
+source = "git+https://github.com/rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
 dependencies = [
- "atmega-hal 0.1.0 (git+https://github.com/Rahix/avr-hal?rev=92d540c)",
+ "atmega-hal 0.1.0 (git+https://github.com/rahix/avr-hal?rev=92d540c)",
  "avr-device",
- "avr-hal-generic 0.1.0 (git+https://github.com/Rahix/avr-hal?rev=92d540c)",
+ "avr-hal-generic 0.1.0 (git+https://github.com/rahix/avr-hal?rev=92d540c)",
  "cfg-if 1.0.0",
  "embedded-hal",
  "ufmt",
@@ -33,10 +33,10 @@ dependencies = [
 [[package]]
 name = "atmega-hal"
 version = "0.1.0"
-source = "git+https://github.com/Rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
+source = "git+https://github.com/rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
 dependencies = [
  "avr-device",
- "avr-hal-generic 0.1.0 (git+https://github.com/Rahix/avr-hal?rev=92d540c)",
+ "avr-hal-generic 0.1.0 (git+https://github.com/rahix/avr-hal?rev=92d540c)",
 ]
 
 [[package]]
@@ -74,7 +74,7 @@ dependencies = [
 [[package]]
 name = "avr-hal-generic"
 version = "0.1.0"
-source = "git+https://github.com/Rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
+source = "git+https://github.com/rahix/avr-hal?rev=92d540c#92d540c4716a1360c8b513f067d75c318318693a"
 dependencies = [
  "avr-device",
  "cfg-if 0.1.10",
@@ -145,7 +145,7 @@ dependencies = [
 name = "m328p-sensors"
 version = "0.1.0"
 dependencies = [
- "arduino-hal 0.1.0 (git+https://github.com/Rahix/avr-hal?rev=92d540c)",
+ "arduino-hal 0.1.0 (git+https://github.com/rahix/avr-hal?rev=92d540c)",
  "embedded-hal",
  "nb 1.0.0",
  "panic-halt",
