@@ -61,18 +61,25 @@ fn root() -> ! {
     ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
     ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
     
+    // Acess our soil sensor located on pin a0
     let a0 = pins.a0.into_analog_input(&mut adc);
+    let a1 = pins.a1.into_analog_input(&mut adc);
 
     loop {
+        // Analog read in our soil sensors
         let values = [
             a0.analog_read(&mut adc),
+            a1.analog_read(&mut adc),
         ];
 
+        // Writing values to serial console
         for(i, v) in values.iter().enumerate() {
             ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
         }
 
         ufmt::uwriteln!(&mut serial, "").void_unwrap();
-        arduino_hal::delay_ms(1000);
+
+        // Wait 10 seconds
+        arduino_hal::delay_ms(10000);
     }
 }
