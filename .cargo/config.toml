@@ -1,5 +1,5 @@
 [alias]
-compile = "build --verbose --target=avr-specs/avr-atmega328p.json "
+compile = "build --verbose --target=avr-hal/avr-specs/avr-atmega328p.json "
 [unstable]
 build-std = ["core"]
 build-std-features = ["compiler-builtins-mangled-names"]
