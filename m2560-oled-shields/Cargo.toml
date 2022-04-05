@@ -1,18 +1,17 @@
 [package]
 name = "m2560-oled-shields"
 version = "0.1.0"
-authors = ["ethgallucci <ethgallucci@gmail.com>"]
-edition = "2018"
+authors = ["Ethan Gallucci <ethgallucci@gmail.com>"]
 license = "MIT OR Apache-2.0"
 
 [[bin]]
 name = "m2560-oled-shields"
-test = false
-bench = false
 path = "src/m2560-shields.rs"
+test = true
+bench = true
+harness = true
 
 [dependencies]
-panic-halt = "0.2.0"
 ufmt = "0.1.0"
 nb = "0.1.2"
 embedded-hal = "0.2.3"

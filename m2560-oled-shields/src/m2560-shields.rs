@@ -1,7 +1,12 @@
 #![no_std]
 #![no_main]
 
-use panic_halt as _;
+use core::panic::PanicInfo;
+
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    core::panic!()
+}
 
 #[arduino_hal::entry]
 fn main() -> ! {

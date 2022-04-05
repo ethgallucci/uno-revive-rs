@@ -1,6 +1,15 @@
 [package]
 name = "m328p-sensors"
 version = "0.1.0"
+authors = ["Ethan Gallucci <ethgallucci@gmail.com>"]
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "m328p-sensors"
+path = "src/m328p-sensors.rs"
+test = true
+bench = true
+harness = true
 
 [dependencies]
 panic-halt = "0.2.0"
@@ -11,4 +20,3 @@ ufmt = "0.1.0"
 [dependencies.arduino-hal]
 path = "../avr-hal/arduino-hal"
 features = ["arduino-uno"]
-
