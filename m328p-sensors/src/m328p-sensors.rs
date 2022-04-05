@@ -9,26 +9,36 @@
 #![no_std]
 #![no_main]
 
-use core::panic::PanicInfo;
-
+// Extern Dependencies
 extern crate embedded_hal;
 extern crate nb;
 extern crate ufmt;
 extern crate arduino_hal;
+extern crate avr_hal_generic;
 
+// Internal Modules
+mod spi_feedback;
+mod usart;
+
+// Panic Info
+use core::panic::PanicInfo;
+
+// Imports
 use nb::block;
-use arduino_hal::prelude::*;
-use arduino_hal::hal::port::{PB1, PB2, PB3};
+use arduino_hal::{adc, prelude::*, spi};
+use arduino_hal::hal::port::{PB3, PB4};
 use arduino_hal::port::{mode::Output, Pin};
-use arduino_hal::spi;
 use embedded_hal::{spi::FullDuplex, serial::Read};
 
-
+// Panic Implementation
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     core::panic!()
 }
 
+// ----------------------------------------------------------------
+// ENTRY
+// ----------------------------------------------------------------
 #[arduino_hal::entry]
 fn root() -> ! {
     loop {
@@ -36,84 +46,47 @@ fn root() -> ! {
         let periph = arduino_hal::Peripherals::take().unwrap();
         let pins = arduino_hal::pins!(periph);
 
-        // Get sensor values here
+        // Establish serial console
+        let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
 
-        // Tidy data
+        // Instantiate ADC channels
+        let mut adc = arduino_hal::Adc::new(dp.ADC, Default::default());
 
-        // Export data to SD
+        // Grab ADC channel readouts
+        let (vbg, gnd, tmp) = (
+            adc.read_blocking(&adc::channel::Vbg),
+            adc.read_blocking(&adc::channel::Gnd),
+            adc.read_blocking(&adc::channel::Temperature),
+        );
+        ufmt::uwriteln!(&mut serial, "Vbandgap: {}", vbg).void_unwrap();
+        ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
+        ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
+        
+        let (a0, a1, a2, a3, a4, a5) = (
+            pins.a0.into_analog_input(&mut adc),
+            pins.a1.into_analog_input(&mut adc),
+            pins.a2.into_analog_input(&mut adc),
+            pins.a3.into_analog_input(&mut adc),
+            pins.a4.into_analog_input(&mut adc),
+            pins.a5.into_analog_input(&mut adc),
+        );
 
-        // 30 minute delay in between logs
-        arduino_hal::delay_ms(65535)
+        loop {
+            let values = [
+                a0.analog_read(&mut adc),
+                a1.analog_read(&mut adc),
+                a2.analog_read(&mut adc),
+                a3.analog_read(&mut adc),
+                a4.analog_read(&mut adc),
+                a5.analog_read(&mut adc),
+            ];
+
+            for(i, v) in values.iter().enumerate() {
+                ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
+            }
+
+            ufmt::uwriteln!(&mut serial, "").void_unwrap();
+            arduino_hal::delay_ms(1000);
+        }
     }
 }
-
-// Proto fn for establishing SPI comms
-fn proto_spi_feedback() -> ! {
-    let dp = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(dp);
-
-    // Setup SPI for text output
-    let serial = arduino_hal::default_serial!(dp, pins, 57600);
-
-    // Create SPI interface
-    let (mut spi, _) = arduino_hal::Spi::new(
-        dp.SPI,
-        pins.d13.into_output(),
-        pins.d11.into_output(),
-        pins.d12.into_pull_up_input(),
-        pins.d10.into_output(),
-        spi::Settings::default(),
-    );
-
-    loop {
-        // Send a byte
-        block!(spi.send(0b00001111)).void_unwrap();
-        // Assumes MISO connected to MOSI, read data should be same
-        let dat = nb::block!(spi.read()).void_unwrap();
-        arduino_hal::delay_ms(1000);
-    }
-}
-
-// Proto fn for sending monitor data accross channels (to the board that will write this data to SD)
-fn recursive_monitor() -> ! {
-    let periph = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(periph);
-
-    // Access ports we'll want
-    let soil_moisture_value = pins.d11.into_output();
-    let temperature_value = pins.d10.into_output();
-    let irrigation_controller_status = pins.d9.into_output();
-
-    some_fn_that_outputs_to_sd(
-        soil_moisture_value,
-        temperature_value,
-        irrigation_controller_status,
-    );
-
-    recursive_monitor()
-}
-
-// Proto fn for writing monitor data to OLED shields on board
-#[inline] fn some_fn_that_outputs_to_sd(
-    smv: Pin<Output, PB3>,
-    tmp: Pin<Output, PB2>,
-    irr: Pin<Output, PB1>,
-) -> () {}
-
-// Proto fn writing/reading from serial console
-fn proto_usart() -> ! {
-    let dp = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(dp);
-    let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
-
-    ufmt::uwriteln!(&mut serial, "Hello from m328p garden!\r").void_unwrap();
-
-    loop {
-        // read a byte
-        let b = nb::block!(serial.read()).void_unwrap();
-
-        // respond
-        ufmt::uwriteln!(&mut serial, "Got {}!\r", b).void_unwrap();
-    }
-}
-

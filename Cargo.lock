@@ -102,6 +102,7 @@ name = "m328p-sensors"
 version = "0.1.0"
 dependencies = [
  "arduino-hal",
+ "avr-hal-generic",
  "embedded-hal",
  "nb 1.0.0",
  "ufmt",

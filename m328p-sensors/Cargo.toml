@@ -19,3 +19,6 @@ ufmt = "0.1.0"
 [dependencies.arduino-hal]
 path = "../avr-hal/arduino-hal"
 features = ["arduino-uno"]
+
+[dependencies.avr-hal-generic]
+path = "../avr-hal/avr-hal-generic"
