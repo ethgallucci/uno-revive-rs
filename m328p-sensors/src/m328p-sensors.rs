@@ -1,6 +1,12 @@
-#![allow(dead_code, unused_variables, unused_mut)]
+// Linter Config
+#![allow(dead_code, unused_variables)]
+#![warn(unused_crate_dependencies, unused_imports, clippy::cast_precision_loss)]
+#![deny(unused_allocation)]
+#![forbid(clippy::many_single_char_names)]
+#![cfg(target_arch = "avr")]
 
-#![no_std] // Embedded mode (only lib-core)
+// Embedded mode (only lib-core)
+#![no_std]
 #![no_main]
 
 use core::panic::PanicInfo;
@@ -20,7 +26,7 @@ use embedded_hal::{spi::FullDuplex, serial::Read};
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
-    loop {}
+    core::panic!()
 }
 
 #[arduino_hal::entry]
@@ -47,7 +53,7 @@ fn proto_spi_feedback() -> ! {
     let pins = arduino_hal::pins!(dp);
 
     // Setup SPI for text output
-    let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
+    let serial = arduino_hal::default_serial!(dp, pins, 57600);
 
     // Create SPI interface
     let (mut spi, _) = arduino_hal::Spi::new(
