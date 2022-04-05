@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    revive
+    AVR-Garduino
 </h1>
 
 <div align="center">
