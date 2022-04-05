@@ -1,0 +1,3 @@
+[submodule "avr-hal"]
+	path = avr-hal
+	url = https://github.com/ethgallucci/avr-hal
