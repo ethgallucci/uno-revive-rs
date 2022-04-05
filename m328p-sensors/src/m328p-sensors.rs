@@ -61,7 +61,7 @@ fn root() -> ! {
     ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
     ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
     
-    // Acess our soil sensor located on pin a0
+    // Acess our soil sensors located on pins a0, a1
     let a0 = pins.a0.into_analog_input(&mut adc);
     let a1 = pins.a1.into_analog_input(&mut adc);
 
