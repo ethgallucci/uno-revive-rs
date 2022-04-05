@@ -1,4 +1,4 @@
-# garden-microcontrollers-rs
+# garden-microcontrollers
 monorepo for a garden monitoring project using Uno R3 m328p and m2560
 
 ### References
