@@ -32,12 +32,12 @@ fn root() -> ! {
 
         // Get sensor values here
 
-        // Tidy data
+        // Tidydata
 
         // Export data to cloud db
 
         // 30 minute delay in between logs
-        arduino_hal::delay_ms(1800000)
+        arduino_hal::delay_ms(65535)
     }
 }
 
@@ -111,7 +111,3 @@ fn proto_usart() -> ! {
     }
 }
 
-// Proto fn for formatting and exporting logs to Apache server
-fn handle_logs() -> ! {
-
-}

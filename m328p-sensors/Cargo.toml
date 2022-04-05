@@ -1,5 +1,5 @@
 [package]
-name = "m328p-soil-rs"
+name = "m328p-sensors"
 version = "0.1.0"
 
 [dependencies]
@@ -13,8 +13,3 @@ git = "https://github.com/Rahix/avr-hal"
 rev = "92d540c"
 features = ["arduino-uno"]
 
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
