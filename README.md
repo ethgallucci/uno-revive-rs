@@ -36,3 +36,21 @@ Connections:
 - In: Soil & sunlight sensors
 - Out-Channel 1: Analog out to m2560 OLED displays
 - Out-Channel 2: SD/ethernet/analog data exfil (logger)
+
+# Dev
+There are a few ways to compile the system.
+
+  From root with provided aliases:
+  ```sh
+  avr-garduino $ cargo build-328p && cargo build-2560
+  ```
+  From root manual:
+  ```sh
+  avr-garduino $ cargo build --verbose --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json
+  avr-garduino $ cargo build --verbose --package m2560-oled-shields --target=m2560-oled-shields/spec/avr-atmega2560.json
+  ```
+  From package:
+  ```sh
+  avr-garduino/m328p-sensors $ cargo build --verbose
+  avr-garduino/m2560-oled-shields $ cargo build --verbose
+  ```
