@@ -1,5 +1,11 @@
-# garden-microcontrollers
-monorepo for a garden monitoring project using Uno R3 m328p and m2560
+
+<h1 align="center">
+    revive
+</h1>
+
+<div align="center">
+    <img src="/doc/nymph.jpeg" width="444" />
+</div>
 
 ### References
 
