@@ -32,9 +32,9 @@ fn root() -> ! {
 
         // Get sensor values here
 
-        // Tidydata
+        // Tidy data
 
-        // Export data to cloud db
+        // Export data to SD
 
         // 30 minute delay in between logs
         arduino_hal::delay_ms(65535)

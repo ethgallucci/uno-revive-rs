@@ -17,6 +17,9 @@ embedded-hal = "0.2.3"
 nb = "1.0.0"
 ufmt = "0.1.0"
 
+[dependencies.embedded-sdmmc]
+path = "../embedded-sdmmc-rs"
+
 [dependencies.arduino-hal]
 path = "../avr-hal/arduino-hal"
 features = ["arduino-uno"]
