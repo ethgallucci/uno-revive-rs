@@ -1,5 +1,7 @@
 use super::*;
 
+extern crate nb;
+
 // Proto fn writing/reading from serial console
 pub fn proto_usart() -> ! {
     let dp = arduino_hal::Peripherals::take().unwrap();

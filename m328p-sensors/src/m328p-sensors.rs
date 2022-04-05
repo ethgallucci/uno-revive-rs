@@ -11,7 +11,6 @@
 
 // Extern Dependencies
 extern crate embedded_hal;
-extern crate nb;
 extern crate ufmt;
 extern crate arduino_hal;
 extern crate avr_hal_generic;
@@ -24,10 +23,7 @@ mod usart;
 use core::panic::PanicInfo;
 
 // Imports
-use nb::block;
 use arduino_hal::{adc, prelude::*, spi};
-use arduino_hal::hal::port::{PB3, PB4};
-use arduino_hal::port::{mode::Output, Pin};
 use embedded_hal::{spi::FullDuplex, serial::Read};
 
 // Panic Implementation

@@ -1,5 +1,8 @@
 use super::*;
 
+extern crate nb;
+use self::nb::block;
+
 // Proto fn for establishing SPI comms
 pub fn proto_spi_feedback() -> ! {
     let dp = arduino_hal::Peripherals::take().unwrap();
