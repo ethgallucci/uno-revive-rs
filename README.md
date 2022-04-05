@@ -4,7 +4,7 @@
 </h1>
 
 <div align="center">
-    <img src="/doc/nymph.jpeg" width="444" />
+    <img src="/doc/img/nymph.jpeg" width="444" />
 </div>
 
 ### References
@@ -13,7 +13,7 @@
 
 #### Pipeline
 
-[Data Pipeline Schemas](https://github.com/ethgallucci/garduino-rs/blob/main/PIPELINES.md)
+[Data Pipeline Schemas](https://github.com/ethgallucci/garduino-rs/blob/main/doc/PIPELINES.md)
 
 # Project Schema
 <aside>
