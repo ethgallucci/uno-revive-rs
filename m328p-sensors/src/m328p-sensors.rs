@@ -41,40 +41,38 @@ fn panic(_info: &PanicInfo) -> ! {
 // ----------------------------------------------------------------
 #[arduino_hal::entry]
 fn root() -> ! {
+    // Access peripherals and indiv. pins
+    let periph = arduino_hal::Peripherals::take().unwrap();
+    let pins = arduino_hal::pins!(periph);
+
+    // Establish serial console
+    let mut serial = arduino_hal::default_serial!(periph, pins, 57600);
+
+    // Instantiate ADC channels
+    let mut adc = arduino_hal::Adc::new(periph.ADC, Default::default());
+
+    // Grab ADC channel readouts
+    let (vbg, gnd, tmp) = (
+        adc.read_blocking(&adc::channel::Vbg),
+        adc.read_blocking(&adc::channel::Gnd),
+        adc.read_blocking(&adc::channel::Temperature),
+    );
+    ufmt::uwriteln!(&mut serial, "Vbandgap: {}", vbg).void_unwrap();
+    ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
+    ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
+    
+    let a0 = pins.a0.into_analog_input(&mut adc);
+
     loop {
-        // Access peripherals and indiv. pins
-        let periph = arduino_hal::Peripherals::take().unwrap();
-        let pins = arduino_hal::pins!(periph);
+        let values = [
+            a0.analog_read(&mut adc),
+        ];
 
-        // Establish serial console
-        let mut serial = arduino_hal::default_serial!(periph, pins, 57600);
-
-        // Instantiate ADC channels
-        let mut adc = arduino_hal::Adc::new(periph.ADC, Default::default());
-
-        // Grab ADC channel readouts
-        let (vbg, gnd, tmp) = (
-            adc.read_blocking(&adc::channel::Vbg),
-            adc.read_blocking(&adc::channel::Gnd),
-            adc.read_blocking(&adc::channel::Temperature),
-        );
-        ufmt::uwriteln!(&mut serial, "Vbandgap: {}", vbg).void_unwrap();
-        ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
-        ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
-        
-        let a0 = pins.a0.into_analog_input(&mut adc);
-
-        loop {
-            let values = [
-                a0.analog_read(&mut adc),
-            ];
-
-            for(i, v) in values.iter().enumerate() {
-                ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
-            }
-
-            ufmt::uwriteln!(&mut serial, "").void_unwrap();
-            arduino_hal::delay_ms(1000);
+        for(i, v) in values.iter().enumerate() {
+            ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
         }
+
+        ufmt::uwriteln!(&mut serial, "").void_unwrap();
+        arduino_hal::delay_ms(1000);
     }
 }
