@@ -3,7 +3,10 @@ members = [
   "m328p-sensors",
   "m2560-oled-shields"
 ]
-exclude = ["avr-hal"]
+exclude = [
+  "avr-hal",
+  "embedded-sdmmc",
+]
 
 [profile.dev]
 panic = "abort"

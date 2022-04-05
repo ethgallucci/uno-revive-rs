@@ -4,4 +4,3 @@ build-2560 = "build --verbose --package m2560-oled-shields --target=avr-hal/avr-
 
 [unstable]
 build-std = ["core"]
-build-std-features = ["compiler-builtins-mangled-names"]
