@@ -40,6 +40,12 @@ Connections:
 # Dev
 There are a few ways to compile the system.
 
+  With both boards plugged in (builds and flashes to board)
+  ```sh
+  avr-garduino/m328-sensors $ cargo run
+  avr-garduino/m2560-oled-shields $ cargo run
+  ```
+
   From root with provided aliases:
   ```sh
   avr-garduino $ cargo build-328p && cargo build-2560
