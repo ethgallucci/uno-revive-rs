@@ -47,10 +47,10 @@ fn root() -> ! {
         let pins = arduino_hal::pins!(periph);
 
         // Establish serial console
-        let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
+        let mut serial = arduino_hal::default_serial!(periph, pins, 57600);
 
         // Instantiate ADC channels
-        let mut adc = arduino_hal::Adc::new(dp.ADC, Default::default());
+        let mut adc = arduino_hal::Adc::new(periph.ADC, Default::default());
 
         // Grab ADC channel readouts
         let (vbg, gnd, tmp) = (
@@ -62,23 +62,11 @@ fn root() -> ! {
         ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
         ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
         
-        let (a0, a1, a2, a3, a4, a5) = (
-            pins.a0.into_analog_input(&mut adc),
-            pins.a1.into_analog_input(&mut adc),
-            pins.a2.into_analog_input(&mut adc),
-            pins.a3.into_analog_input(&mut adc),
-            pins.a4.into_analog_input(&mut adc),
-            pins.a5.into_analog_input(&mut adc),
-        );
+        let a0 = pins.a0.into_analog_input(&mut adc);
 
         loop {
             let values = [
                 a0.analog_read(&mut adc),
-                a1.analog_read(&mut adc),
-                a2.analog_read(&mut adc),
-                a3.analog_read(&mut adc),
-                a4.analog_read(&mut adc),
-                a5.analog_read(&mut adc),
             ];
 
             for(i, v) in values.iter().enumerate() {
