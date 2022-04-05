@@ -1,17 +1,15 @@
 # garden-microcontrollers-rs
 monorepo for a garden monitoring project using Uno R3 m328p and m2560
 
-## System Arch
-# References
+### References
 
 [Arduino Garden Controller](https://practical.engineering/blog/2016/1/20/arduino-garden-controller)
 
-# Pipeline
+#### Pipeline
 
 [Data Pipeline Schemas](https://github.com/ethgallucci/garduino-rs/blob/main/PIPELINES.md)
 
-# Arch
-
+# Project Schema
 <aside>
 💡 Boards A and B can optimally be condensed into one board that carries out both: sensor capture & data exfil to SD (or ethernet, or analog out etc.). Assume boards A and B are one and I/O is condensed into the fewest connections possible. So board ‘A’ would take sensor data as input and split output into two channels. One going to the pins controlling data exfil (SD/ethernet/analog), and one going to the two m2560 displays via analog out.
 
