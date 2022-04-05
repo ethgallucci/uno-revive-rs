@@ -10,10 +10,10 @@
 #![no_main]
 
 // Extern Dependencies
-extern crate embedded_hal;
-extern crate ufmt;
 extern crate arduino_hal;
 extern crate avr_hal_generic;
+extern crate embedded_hal;
+extern crate ufmt;
 
 // Internal Modules
 mod spi_feedback;
@@ -23,7 +23,7 @@ mod usart;
 use core::panic::PanicInfo;
 
 // Imports
-use arduino_hal::{adc, prelude::*, spi};
+use arduino_hal::{adc, prelude::*, spi, hal::wdt};
 use embedded_hal::{spi::FullDuplex, serial::Read};
 
 // Panic Implementation
@@ -61,6 +61,10 @@ fn root() -> ! {
     let a0 = pins.a0.into_analog_input(&mut adc);
     let a1 = pins.a1.into_analog_input(&mut adc);
 
+    // Setup our watchdog with an 8-second timeout
+    let mut watchdog = wdt::Wdt::new(periph.WDT, &periph.CPU.mcusr);
+    watchdog.start(wdt::Timeout::Ms8000).unwrap();
+
     loop {
         // Analog read in our soil sensors
         let values = [
@@ -72,10 +76,11 @@ fn root() -> ! {
         for(i, v) in values.iter().enumerate() {
             ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
         }
-
         ufmt::uwriteln!(&mut serial, "").void_unwrap();
 
-        // Wait 10 seconds
-        arduino_hal::delay_ms(10000);
+        // Wait 3 seconds
+        arduino_hal::delay_ms(3000);
+        // Feed the watchdog
+        watchdog.feed();
     }
 }
