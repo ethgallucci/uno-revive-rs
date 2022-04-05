@@ -32,8 +32,8 @@ Controls all sensors, captures soil moisture and sunlight inputs, batches them, 
 Connections:
 
 - In: Soil & sunlight sensors
-- Out-Channel 1: Analog out to m2560 OLED displays
-- Out-Channel 2: SD/ethernet/analog data exfil (logger)
+- Out-Channel 1: m2560 OLED displays
+- Out-Channel 2: SD (logger)
 
 # Dev
 There are a few ways to compile the system.
