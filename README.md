@@ -1,7 +1,8 @@
 
-<h1 align="center">
-    Garduino-Uno
+<h1 align="left">
+    uno-revive-rs
 </h1>
+[![commit-shield]][commit-url]
 
 <div align="center">
     <img src="/doc/img/nymph.jpeg" width="444" />
@@ -61,3 +62,7 @@ There are a few ways to compile the system.
 # Special Thanks
 I want to extend my gratitude to the contributors of the [avr-hal](https://github.com/rahix/avr-hal) crate.
 This project couldn't have done it without them :)
+
+
+[commit-shield]: https://img.shields.io/github/commit-activity/w/ethgallucci/uno-revive-rs?style=plastic
+[commit-url]: https://github.com/ethgallucci/uno-revive-rs/commits/main
