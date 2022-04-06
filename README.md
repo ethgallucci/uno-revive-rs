@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    AVR-Garduino
+    Garduino-Uno
 </h1>
 
 <div align="center">
