@@ -1,8 +1,17 @@
 
 <h1 align="left">
-    uno-revive-rs
+  <p align="left">
+      uno-revive-rs
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ethgallucci/uno-revive-rs?style=plastic">
+  <a href="https://github.com/ethgallucci/uno-revive-rs/graphs/commit-activity">
+      <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/ethgallucci/uno-revive-rs?style=plastic" />
+  </a>
+  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/ethgallucci/uno-revive-rs?color=olive&style=plastic">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/ethgallucci/uno-revive-rs?color=white&style=plastic">
+</p>
 </h1>
-[![commit-shield]][commit-url]
+
+
 
 <div align="center">
     <img src="/doc/img/nymph.jpeg" width="444" />
