@@ -2,7 +2,7 @@
 <h1 align="left">
   <p align="left">
       uno-revive-rs
-  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ethgallucci/uno-revive-rs?style=plastic">
+  <img alt="GitHub release (latest SemVer including pre-releases)" src="https://img.shields.io/github/v/release/ethgallucci/uno-revive-rs?include_prereleases&style=plastic">
   <a href="https://github.com/ethgallucci/uno-revive-rs/graphs/commit-activity">
       <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/ethgallucci/uno-revive-rs?style=plastic" />
   </a>
