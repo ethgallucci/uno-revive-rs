@@ -5,7 +5,6 @@ members = [
 ]
 exclude = [
   "avr-hal",
-  "embedded-sdmmc",
 ]
 
 [profile.dev]

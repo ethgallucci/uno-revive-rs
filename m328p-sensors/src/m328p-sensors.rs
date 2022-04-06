@@ -6,7 +6,7 @@
 #![cfg(target_arch = "avr")]
 
 // Embedded mode (only lib-core)
-#![no_std]
+#![cfg_attr(not(test), no_std)]
 #![no_main]
 
 // Extern Dependencies
