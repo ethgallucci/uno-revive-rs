@@ -17,8 +17,10 @@ nb = "1.0.0"
 ufmt = "0.1.0"
 
 [dependencies.arduino-hal]
-path = "../avr-hal/arduino-hal"
+git = "https://github.com/ethgallucci/avr-hal"
+rev = "e897783"
 features = ["arduino-uno"]
 
 [dependencies.avr-hal-generic]
-path = "../avr-hal/avr-hal-generic"
+git = "https://github.com/ethgallucci/avr-hal"
+rev = "e897783"
