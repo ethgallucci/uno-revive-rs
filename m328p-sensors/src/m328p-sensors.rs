@@ -23,7 +23,8 @@ mod usart;
 use core::panic::PanicInfo;
 
 // Imports
-use arduino_hal::{adc, prelude::*, spi, hal::wdt};
+use arduino_hal as hal;
+use hal::{adc, prelude::*, spi, hal::wdt};
 use embedded_hal::{spi::FullDuplex, serial::Read};
 
 // Panic Implementation
@@ -38,14 +39,14 @@ fn panic(_info: &PanicInfo) -> ! {
 #[arduino_hal::entry]
 fn root() -> ! {
     // Access peripherals and indiv. pins
-    let periph = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(periph);
+    let periph = hal::Peripherals::take().unwrap();
+    let pins = hal::pins!(periph);
 
     // Establish serial console
-    let mut serial = arduino_hal::default_serial!(periph, pins, 57600);
+    let mut serial = hal::default_serial!(periph, pins, 57600);
 
     // Instantiate ADC channels
-    let mut adc = arduino_hal::Adc::new(periph.ADC, Default::default());
+    let mut adc = hal::Adc::new(periph.ADC, Default::default());
 
     // Grab ADC channel readouts
     let (vbg, gnd, tmp) = (
@@ -79,7 +80,7 @@ fn root() -> ! {
         ufmt::uwriteln!(&mut serial, "").void_unwrap();
         
         // Wait 3 seconds
-        arduino_hal::delay_ms(3000);
+        hal::delay_ms(3000);
         // Feed the watchdog
         watchdog.feed();
     }
