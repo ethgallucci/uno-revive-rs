@@ -24,25 +24,23 @@
 # Components & Controllers
 
 - 1-2 Uno R3 m328p
-    - Soil moisture sensor + sunlight sensor: m328p-sensors
+    - Soil moisture sensor: m328p-sensors
 - 2 Uno R3 m2560
     - OLED display shields for values on board near garden
     - Boards B & C (displays): m2560-oled-shields
 
 # Board: Arduino Uno R3 m328p (sensors)
 
-Controls all sensors, captures soil moisture and sunlight inputs, batches them, and outputs them to the logger board. 
+Controls all sensors, captures soil moisture inputs. 
 
 - Soil Moisture sensors:
     - [https://vetco.net/products/arduino-soil-moisture-sensor-d53](https://vetco.net/products/arduino-soil-moisture-sensor-d53)
-- Sunlight sensors:
-    - [https://www.robotshop.com/en/grove-sunlight-sensor.html](https://www.robotshop.com/en/grove-sunlight-sensor.html)
 
 Connections:
 
-- In: Soil & sunlight sensors
+- In: Soil sensors
 - Out-Channel 1: m2560 OLED displays
-- Out-Channel 2: SD (logger)
+- Out-Channel 2: <some datalogger module I haven't chosen yet>
 
 # Installation: m328p-sensors
 ## dependencies
