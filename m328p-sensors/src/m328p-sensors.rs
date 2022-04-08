@@ -2,7 +2,6 @@
 #![allow(dead_code, unused_variables)]
 #![warn(unused_crate_dependencies, unused_imports, clippy::cast_precision_loss)]
 #![deny(unused_allocation)]
-#![forbid(clippy::many_single_char_names)]
 #![cfg(target_arch = "avr")]
 
 // Embedded mode (only lib-core)
