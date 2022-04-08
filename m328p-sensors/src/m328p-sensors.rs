@@ -54,6 +54,7 @@ fn root() -> ! {
         adc.read_blocking(&adc::channel::Gnd),
         adc.read_blocking(&adc::channel::Temperature),
     );
+    // Write ADC channel readouts to serial console
     ufmt::uwriteln!(&mut serial, "Vbandgap: {}", vbg).void_unwrap();
     ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
     ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
