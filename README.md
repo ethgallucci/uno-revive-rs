@@ -54,6 +54,14 @@ You will also need in installation of avr-gcc, a GNU cross compiler to the avr a
 brew tap osx-cross/avr && brew install avr-gcc
 ```
 
+## cloning the repo along with its submodules
+```sh
+git clone https://github.com/ethgallucci/uno-revive-rs
+cd uno-revive-rs
+git submodule init
+git submodule update
+```
+
 ## building from source
 ### ensure Rust toolchain is set to nightly-1.51.0
 Since we are cross compiling from Rust to AVR, we need to make sure our Rust compiler is on the right channel (e.g. one that supports the avr fork of Rust). 
