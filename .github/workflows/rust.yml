@@ -17,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: cargo build-328p && cargo build-2560
+      run: cargo build --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json
