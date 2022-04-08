@@ -46,6 +46,7 @@ Connections:
 ## dependencies
 * Rust
 * avr-gcc
+
 To compile and install the code for [m328p-sensors](https://github.com/ethgallucci/uno-revive-rs/tree/main/m328p-sensors/m328p-sensors.rs) you'll first need to have Rust installed. If you don't already, see https://www.rust-lang.org/tools/install.
 
 You will also need in installation of avr-gcc, a GNU cross compiler to the avr architecture. avr-gcc can be installed with homebrew
