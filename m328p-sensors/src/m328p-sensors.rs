@@ -1,6 +1,7 @@
 // Linter Config
 #![allow(dead_code, unused_variables)]
 #![warn(unused_crate_dependencies, unused_imports, clippy::cast_precision_loss)]
+#![forbid(clippy::logic_bug)]
 #![deny(unused_allocation)]
 #![cfg(target_arch = "avr")]
 
