@@ -1,6 +1,3 @@
 [submodule "avr-hal"]
 	path = avr-hal
 	url = https://github.com/ethgallucci/avr-hal
-[submodule "embedded-sdmmc-rs"]
-	path = embedded-sdmmc-rs
-	url = https://github.com/ethgallucci/embedded-sdmmc-rs
