@@ -16,5 +16,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json
+    - name: Build 
+      run: sudo apt install gcc-avr && cargo build --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json
