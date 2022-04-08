@@ -1,4 +1,3 @@
-
 <h1 align="left">
   <p align="left">
       uno-revive-rs
@@ -25,25 +24,57 @@
 # Components & Controllers
 
 - 1-2 Uno R3 m328p
-    - Soil moisture sensor + sunlight sensor: m328p-sensors
+    - Soil moisture sensor: m328p-sensors
 - 2 Uno R3 m2560
     - OLED display shields for values on board near garden
     - Boards B & C (displays): m2560-oled-shields
 
 # Board: Arduino Uno R3 m328p (sensors)
 
-Controls all sensors, captures soil moisture and sunlight inputs, batches them, and outputs them to the logger board. 
+Controls all sensors, captures soil moisture inputs. 
 
 - Soil Moisture sensors:
     - [https://vetco.net/products/arduino-soil-moisture-sensor-d53](https://vetco.net/products/arduino-soil-moisture-sensor-d53)
-- Sunlight sensors:
-    - [https://www.robotshop.com/en/grove-sunlight-sensor.html](https://www.robotshop.com/en/grove-sunlight-sensor.html)
 
 Connections:
 
-- In: Soil & sunlight sensors
+- In: Soil sensors
 - Out-Channel 1: m2560 OLED displays
-- Out-Channel 2: SD (logger)
+- Out-Channel 2: <some datalogger module I haven't chosen yet>
+
+# Installation: m328p-sensors
+## dependencies
+* Rust
+* avr-gcc
+To compile and install the code for [m328p-sensors](https://github.com/ethgallucci/uno-revive-rs/tree/main/m328p-sensors/m328p-sensors.rs) you'll first need to have Rust installed. If you don't already, see https://www.rust-lang.org/tools/install.
+
+You will also need in installation of avr-gcc, a GNU cross compiler to the avr architecture. avr-gcc can be installed with homebrew
+```sh
+brew tap osx-cross/avr && brew install avr-gcc
+```
+
+## building from source
+### ensure Rust toolchain is set to nightly-1.51.0
+Since we are cross compiling from Rust to AVR, we need to make sure our Rust compiler is on the right channel (e.g. one that supports the avr fork of Rust). 
+```sh
+rustc --version
+```
+Ensure the [rust-toolchain.toml](https://github.com/ethgallucci/uno-revive-rs/blob/main/rust-toolchain.toml) file is correctly enforcing the correct nightly channel (1.51.0-nightly). If it's not, you can switch to the correct nightly version (since we use override here, the Rust toolchain version will only be affected in this directory).
+```sh
+rustup override set nightly-2021-01-07
+```
+
+### compiling and flashing to m328p
+From the root directory of uno-revive-rs
+```sh
+cargo build-328p
+```
+Move into m328p-sensors and flash the code (ensure board is plugged in and recognized)
+```sh
+cd m328p-sensors
+cargo run
+```
+
 
 # Dev
 There are a few ways to compile the system.
