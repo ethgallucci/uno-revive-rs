@@ -1,20 +1,5 @@
-<h1 align="left">
-  <p align="left">
-      uno-revive-rs
-  <img alt="GitHub release (latest SemVer including pre-releases)" src="https://img.shields.io/github/v/release/ethgallucci/uno-revive-rs?include_prereleases&style=plastic">
-  <a href="https://github.com/ethgallucci/uno-revive-rs/graphs/commit-activity">
-      <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/ethgallucci/uno-revive-rs?style=plastic" />
-  </a>
-  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/ethgallucci/uno-revive-rs?color=olive&style=plastic">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/ethgallucci/uno-revive-rs?color=white&style=plastic">
-</p>
-</h1>
+## uno-revive-rs <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/ethgallucci/uno-pepper-rs?color=orange&include_prereleases&style=flat-square"> <img alt="Commit activity" src="https://img.shields.io/github/commit-activity/m/ethgallucci/uno-revive-rs?style=flat-square" /> <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/ethgallucci/uno-revive-rs?color=green&style=flat-square"> <img alt="GitHub file size in bytes" src="https://img.shields.io/github/size/ethgallucci/uno-pepper-rs/elf/m328p-sensors.elf?style=flat-square"> <img alt="GitHub issues" src="https://img.shields.io/github/issues/ethgallucci/uno-revive-rs?color=white&style=flat-square">
 
-
-
-<div align="center">
-    <img src="/doc/img/nymph.jpeg" width="444" />
-</div>
 
 ### References
 
