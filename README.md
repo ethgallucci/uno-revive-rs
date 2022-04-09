@@ -81,7 +81,7 @@ There are a few ways to compile the system.
 
   From root with provided aliases:
   ```sh
-  avr-garduino $ cargo build-328p && cargo build-2560
+  avr-garduino $ cargo build-sensors && cargo build-i2c
   ```
   From root manual:
   ```sh

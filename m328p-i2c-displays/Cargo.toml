@@ -1,12 +1,12 @@
 [package]
-name = "m2560-oled-shields"
+name = "m328p-i2c-displays"
 version = "0.1.0"
 authors = ["Ethan Gallucci <ethgallucci@gmail.com>"]
 license = "MIT OR Apache-2.0"
 
 [[bin]]
-name = "m2560-oled-shields"
-path = "src/m2560-shields.rs"
+name = "m328p_i2c_displays"
+path = "src/m328p_i2c.rs"
 test = true
 bench = true
 harness = true
