@@ -5,6 +5,8 @@
 
 [Arduino Garden Controller](https://practical.engineering/blog/2016/1/20/arduino-garden-controller)
 
+### Roadmap
+[uno-revive-rs: roadmap](https://0xryuk.notion.site/e9d60bd4ebe94cb6b4b675c06e2dea88?v=037569acc8ce497db3501978a1e4a49b)
 
 # Components & Controllers
 
