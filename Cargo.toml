@@ -1,7 +1,7 @@
 [workspace]
 members = [
   "m328p-sensors",
-  "m2560-oled-shields"
+  "m328p-i2c-displays"
 ]
 exclude = [
   "avr-hal",

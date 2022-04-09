@@ -1,6 +1,6 @@
 [alias]
-build-328p = "build --verbose --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json"
-build-2560 = "build --verbose --package m2560-oled-shields --target=m2560-oled-shields/spec/avr-atmega2560.json"
+build-sensors = "build --verbose --package m328p-sensors --target=m328p-sensors/spec/avr-atmega328p.json"
+build-i2c = "build --verbose --package m328p-i2c-displays --target=m328p-i2c-displays/spec/avr-atmega328p.json"
 
 [unstable]
 build-std = ["core"]

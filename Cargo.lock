@@ -94,7 +94,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "m2560-oled-shields"
+name = "m328p-i2c-displays"
 version = "0.1.0"
 dependencies = [
  "arduino-hal",
