@@ -8,6 +8,9 @@
 // Embedded mode (only lib-core)
 #![no_std]
 #![no_main]
+extern crate arduino_hal;
+extern crate ufmt;
+
 use arduino_hal::prelude::*;
 use core::panic::PanicInfo;
 
@@ -15,25 +18,6 @@ use core::panic::PanicInfo;
 fn panic(_info: &PanicInfo) -> ! {
     core::panic!()
 }
-
-/*!
- * Forked from https://github.com/Rahix/avr-hal/blob/main/examples/arduino-uno/src/bin/uno-i2cdetect.rs
- * 
- * Detect all devices connected on the I2C/TWI bus.  Useful if you can't figure out the address of
- * an I2C device.
- *
- * This example will check all possible addresses on the I2C bus for whether a device responds to
- * them.  It will output a table of the results.  This check is done twice, once for reading and
- * once for writing, as some devices only respond to one of the two operations.
- *
- * ATTENTION: Randomly reading from and writing to devices can lead to unexpected results.  Some
- * devices do not cope well with this.  Use with care!
- *
- * Connections
- * -----------
- *  - `A4`: I2C SDA signal
- *  - `A5`: I2C SCL signal
- */
 
 #[arduino_hal::entry]
 fn root() -> ! {

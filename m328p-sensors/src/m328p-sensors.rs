@@ -1,5 +1,4 @@
 // Linter Config
-#![allow(dead_code, unused_variables)]
 #![warn(unused_crate_dependencies, unused_imports, clippy::cast_precision_loss)]
 #![forbid(clippy::logic_bug)]
 #![deny(unused_allocation)]
@@ -15,17 +14,16 @@ extern crate avr_hal_generic;
 extern crate embedded_hal;
 extern crate ufmt;
 
-// Internal Modules
-mod spi_feedback;
-mod usart;
+// Macros we defined in another crate
+extern crate reviver_macros;
+use reviver_macros::vgt;
 
 // Panic Info
 use core::panic::PanicInfo;
 
 // Imports
 use arduino_hal as hal;
-use hal::{adc, prelude::*, spi, hal::wdt};
-use embedded_hal::{spi::FullDuplex, serial::Read};
+use hal::{adc, prelude::*, hal::wdt};
 
 // Panic Implementation
 #[panic_handler]
@@ -48,18 +46,10 @@ fn root() -> ! {
     // Instantiate ADC channels
     let mut adc = hal::Adc::new(periph.ADC, Default::default());
 
-    // Grab ADC channel readouts
-    let (vbg, gnd, tmp) = (
-        adc.read_blocking(&adc::channel::Vbg),
-        adc.read_blocking(&adc::channel::Gnd),
-        adc.read_blocking(&adc::channel::Temperature),
-    );
-    // Write ADC channel readouts to serial console
-    ufmt::uwriteln!(&mut serial, "Vbandgap: {}", vbg).void_unwrap();
-    ufmt::uwriteln!(&mut serial, "Ground: {}", gnd).void_unwrap();
-    ufmt::uwriteln!(&mut serial, "Temperature: {}", tmp).void_unwrap();
-    
-    // Acess our soil sensors located on pins a0, a1
+    // ADC Channel readouts
+    vgt!(adc, serial);
+
+    // Sensors
     let a0 = pins.a0.into_analog_input(&mut adc);
     let a1 = pins.a1.into_analog_input(&mut adc);
 

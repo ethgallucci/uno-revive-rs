@@ -13,8 +13,11 @@ harness = true
 
 [dependencies]
 embedded-hal = "0.2.3"
-nb = "1.0.0"
 ufmt = "0.1.0"
+
+[dependencies.reviver-macros]
+git = "https://github.com/ethgallucci/reviver-macros"
+branch = "main"
 
 [dependencies.arduino-hal]
 git = "https://github.com/ethgallucci/avr-hal"

@@ -11,6 +11,9 @@ test = true
 bench = true
 harness = true
 
+[dependencies]
+ufmt = "0.1.0"
+
 [dependencies.arduino-hal]
 git = "https://github.com/ethgallucci/avr-hal"
 rev = "e897783"
