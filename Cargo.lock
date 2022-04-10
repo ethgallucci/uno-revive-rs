@@ -108,7 +108,7 @@ dependencies = [
  "arduino-hal",
  "avr-hal-generic",
  "embedded-hal",
- "reviver-macros 0.1.0 (git+https://github.com/ethgallucci/reviver-macros?branch=main)",
+ "reviver-macros",
  "ufmt",
 ]
 
@@ -156,10 +156,6 @@ checksum = "632d02bff7f874a36f33ea8bb416cd484b90cc66c1194b1a1110d067a7013f58"
 dependencies = [
  "proc-macro2",
 ]
-
-[[package]]
-name = "reviver-macros"
-version = "0.1.0"
 
 [[package]]
 name = "reviver-macros"
