@@ -2,7 +2,6 @@
 members = [
   "m328p-sensors",
   "m328p-i2c-displays",
-  "reviver-macros"
 ]
 exclude = [
   "avr-hal",
