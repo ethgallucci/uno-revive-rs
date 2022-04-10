@@ -1,6 +1,7 @@
 [alias]
 build-sensors = "build --verbose --package m328p-sensors --target=spec/avr-atmega328p.json"
 build-i2c = "build --verbose --package m328p-i2c-displays --target=spec/avr-atmega328p.json"
+build-macros = "build --verbose --package reviver-macros --target=spec/avr-atmega328p.json"
 
 [unstable]
 build-std = ["core"]

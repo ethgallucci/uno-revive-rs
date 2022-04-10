@@ -16,7 +16,7 @@ extern crate ufmt;
 
 // Macros we defined in another crate
 extern crate reviver_macros;
-use reviver_macros::vgt;
+use reviver_macros::*;
 
 // Panic Info
 use core::panic::PanicInfo;
@@ -59,10 +59,7 @@ fn root() -> ! {
 
     loop {
         // Analog read in our soil sensors
-        let values = [
-            a0.analog_read(&mut adc),
-            a1.analog_read(&mut adc),
-        ];
+        let values = two_pins_to_arr_analog!(&mut adc, a0, a1);
 
         // Writing values to serial console
         for(i, v) in values.iter().enumerate() {

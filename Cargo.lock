@@ -108,7 +108,7 @@ dependencies = [
  "arduino-hal",
  "avr-hal-generic",
  "embedded-hal",
- "reviver-macros",
+ "reviver-macros 0.1.0 (git+https://github.com/ethgallucci/reviver-macros?branch=main)",
  "ufmt",
 ]
 
@@ -160,7 +160,11 @@ dependencies = [
 [[package]]
 name = "reviver-macros"
 version = "0.1.0"
-source = "git+https://github.com/ethgallucci/reviver-macros?branch=main#ea136b0633f9e51b7f2b64742b044553c869ee40"
+
+[[package]]
+name = "reviver-macros"
+version = "0.1.0"
+source = "git+https://github.com/ethgallucci/reviver-macros?branch=main#82705e371ecabb3bbefec36b3d80012fd10cc5eb"
 
 [[package]]
 name = "rustc_version"
