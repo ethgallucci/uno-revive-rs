@@ -1,3 +1,6 @@
 [submodule "avr-hal"]
 	path = avr-hal
 	url = https://github.com/ethgallucci/avr-hal
+[submodule "reviver-macros"]
+	path = reviver-macros
+	url = https://github.com/ethgallucci/reviver-macros
