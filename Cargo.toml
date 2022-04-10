@@ -1,7 +1,7 @@
 [workspace]
 members = [
   "m328p-sensors",
-  "m328p-i2c-displays"
+  "m328p-i2c-displays",
 ]
 exclude = [
   "avr-hal",
