@@ -5,6 +5,7 @@ members = [
 ]
 exclude = [
   "avr-hal",
+  "reviver-macros"
 ]
 
 [profile.dev]
