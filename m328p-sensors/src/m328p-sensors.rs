@@ -62,10 +62,7 @@ fn root() -> ! {
         let values = two_pins_to_arr_analog!(&mut adc, a0, a1);
 
         // Writing values to serial console
-        for(i, v) in values.iter().enumerate() {
-            ufmt::uwrite!(&mut serial, "A{}: {} ", i, v).void_unwrap();
-        }
-        ufmt::uwriteln!(&mut serial, "").void_unwrap();
+        two_pins_analog_to_ser_out!(&mut serial, values);
         
         // Wait 3 seconds
         hal::delay_ms(3000);
