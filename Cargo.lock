@@ -160,7 +160,7 @@ dependencies = [
 [[package]]
 name = "reviver-macros"
 version = "0.1.0"
-source = "git+https://github.com/ethgallucci/reviver-macros?branch=main#82705e371ecabb3bbefec36b3d80012fd10cc5eb"
+source = "git+https://github.com/ethgallucci/reviver-macros?branch=main#3900fd16d67a9308006b929f38ac32c19e5c1328"
 
 [[package]]
 name = "rustc_version"
